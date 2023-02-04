@@ -68,7 +68,6 @@ public class Mainclass {
 		
 		String jsonStr = JSONValue.toJSONString(obj3);
 		System.out.println("jsonstring is "+ jsonStr);
-		System.out.println("%%%%%%%%%%%%");
 		
 		//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		

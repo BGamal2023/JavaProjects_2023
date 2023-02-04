@@ -1,12 +1,9 @@
 package Code_For_Customer_Sorting;
 import java.io.FileReader;
-import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.lang.model.element.NestingKind;
 
 import org.*;
 import org.json.JSONArray;
@@ -64,10 +61,6 @@ public class Mainclass {
 		obj3.add(new Integer(3));
 		obj3.add(new Double(321.1));
 		System.out.println("obj3 is " + obj3);
-		System.out.println("%%%%%%%%%%%%");
-		
-		String jsonStr = JSONValue.toJSONString(obj3);
-		System.out.println("jsonstring is "+ jsonStr);
 		System.out.println("%%%%%%%%%%%%");
 		
 		//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
