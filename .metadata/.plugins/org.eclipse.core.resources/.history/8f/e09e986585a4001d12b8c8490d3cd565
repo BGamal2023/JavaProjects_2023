@@ -1,0 +1,10 @@
+package Code_For_Customer_Sorting;
+
+public class customerSorting {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

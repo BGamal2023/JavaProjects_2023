@@ -1,0 +1,11 @@
+package password_programm;
+
+public class passwordProgramm {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+	
+}
