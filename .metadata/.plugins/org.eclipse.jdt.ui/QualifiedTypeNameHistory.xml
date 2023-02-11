@@ -1,10 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
     <fullyQualifiedTypeName name="java.lang.Package"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="java.lang.InheritableThreadLocal"/>
     <fullyQualifiedTypeName name="javax.swing.plaf.synth.Region"/>
     <fullyQualifiedTypeName name="java.lang.reflect.Array"/>
     <fullyQualifiedTypeName name="java.lang.ArrayStoreException"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="java.lang.Object"/>
+    <fullyQualifiedTypeName name="org.json.simple.parser.JSONParser"/>
+    <fullyQualifiedTypeName name="org.json.JSONObject"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="java.util.ArrayList"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="java.lang.Double"/>
+    <fullyQualifiedTypeName name="java.sql.Struct"/>
+    <fullyQualifiedTypeName name="javax.lang.model.element.NestingKind"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.io.Console"/>
+    <fullyQualifiedTypeName name="org.json.simple.JSONValue"/>
+    <fullyQualifiedTypeName name="org.json.JSONArray"/>
+    <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
+    <fullyQualifiedTypeName name="java.io.FileWriter"/>
+    <fullyQualifiedTypeName name="org.w3c.dom.Text"/>
+    <fullyQualifiedTypeName name="javax.print.attribute.standard.OutputDeviceAssigned"/>
+    <fullyQualifiedTypeName name="java.io.BufferedReader"/>
+    <fullyQualifiedTypeName name="java.io.FileReader"/>
 </qualifiedTypeNameHistroy>

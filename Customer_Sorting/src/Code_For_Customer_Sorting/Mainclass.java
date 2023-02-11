@@ -1,12 +1,25 @@
 package Code_For_Customer_Sorting;
+import   java.lang.reflect.Type;
+import java.io.BufferedWriter;
+import java.io.Console;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.FilenameFilter;
+import java.io.IOException;
+import java.lang.annotation.ElementType;
 import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import javax.lang.model.element.NestingKind;
+import javax.management.openmbean.InvalidOpenTypeException;
+import javax.print.attribute.standard.OutputDeviceAssigned;
+import javax.swing.plaf.metal.MetalIconFactory.FolderIcon16;
 
 import org.*;
 import org.json.JSONArray;
@@ -14,9 +27,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.JSONParser;
+import org.w3c.dom.Text;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 public class Mainclass {
 
-// i have customer database :-
+ // i have customer database :-
 	// i need to access this database
 	// get our customer data
 	// what i will do with this data is :-
@@ -30,58 +48,242 @@ public class Mainclass {
 	//8- get file for all previous points.
 	//9- save this file in separate database(the sorted database). 
 	
-
+	static File file=new File(".\\the_database");
+	static File[] listoffilenames=file.listFiles();
+    static ArrayList<String> paths =new ArrayList<>();
+    static File[]listOfPathsFiles;
+    
+    static ArrayList<String> Json_arrayList_from_data_base=new ArrayList<>();
+    static Gson myGson=new Gson();
+    static Map<String,Map<String, Object>> mapOfOurCustomerDetailes = new HashMap<>();
 	public static void main(String[] args) throws JSONException  {
 		
-		//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		//1- how to create JSON object .....
+		f4_get_sorted_Map_by_age_of_our_customers();
 		
-		JSONObject obj1 = new JSONObject();
-		obj1.put("name", "bahaa");
-	
-			obj1.put("age",new Integer(25)	);
+		System.out.println(mapOfOurCustomerDetailes);
 		
-		obj1.put("salary", new Double(6000.00));
-		System.out.println(obj1);
-		System.out.println("%%%%%%%%%%%%");
-		//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+//		Map<Integer, String> myMap=new HashMap<>();
+//		myMap.put(1, "c");
+//		myMap.put(2, "Java");
+//		myMap.put(3, "C++");
+//		myMap.put(4, "js");
+//		
+//			System.out.println("initial map is = " +myMap);
+//			System.out.println("set map is = " +myMap.entrySet());
+////		f0_get_file_names_of_json_files_from_database();
+////	   f1_creat_path_for_every_json_file();
+////	   f2_read_JSON_objects_from_the_data_base();
+////	  
+////	    f3();
+	    
+
+
 		
-		//2- how to convert java obj to JSON object....
-		
-		Map obj2=new HashMap();
-		obj2.put("name", "Ahmed");
-		obj2.put("age", new Integer(20));
-		obj2.put("salary", new Double(20.0));
-		System.out.println(obj2);
-		String jsontext=JSONValue.toJSONString(obj2);
-		System.out.println(jsontext);
-		System.out.println("%%%%%%%%%%%%");
-		
-		
-		
-		List obj3= new ArrayList<>();
-		obj3.add("khadiga");
-		obj3.add(new Integer(3));
-		obj3.add(new Double(321.1));
-		System.out.println("obj3 is " + obj3);
-		System.out.println("%%%%%%%%%%%%");
-		
-		String jsonStr = JSONValue.toJSONString(obj3);
-		System.out.println("jsonstring is "+ jsonStr);
-		System.out.println("%%%%%%%%%%%%");
-		
-		//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		
-		//3- using json array...
-		
-		JSONArray obj4=new JSONArray();
-		obj4.put("malek");
-		obj4.put(new Integer(5));
-		obj4.put(new Double(33.22));
-		System.out.println("obj4 is " +obj4);
-		System.out.println("%%%%%%%%%%%%");
 		
 		
 	}
-
+		
+		
+	
+	
+	
+	//------------------------------F0--------------------------------
+	public static File[] f0_get_file_names_of_json_files_from_database() {
+		File file=new File(".\\the_database");
+		File[] listoffilenames=file.listFiles();
+		
+//		
+//		
+		
+		return listoffilenames;
+	}
+	
+	//-----------------------------T0_F0----------------------------------
+	public static void t0_f0() {
+		for(int i=0;i<listoffilenames.length;i++) {
+		System.out.println(listoffilenames[i].getName());
+	}
+	System.out.println(listoffilenames.length);
+     System.out.println(file.getPath());
+	}
+	//-------------------------------F1------------------------------------
+	
+	public static ArrayList<String> f1_creat_path_for_every_json_file() {
+		
+	for(int i =0 ; i<listoffilenames.length;i++) {
+		paths.add(".\\the_database" + "\\" + listoffilenames[i].getName().toString());
+	}
+			
+		return paths;
+		
+	}
+	
+	//-------------------------------T1_F1--------------------------------
+	public static void t1_f1() {
+		
+	for(int i=0;i<paths.size();i++) {
+		System.out.println(paths.get(i));
+	}
+	System.out.println(paths.size());
+	}
+	
+	//--------------------------------F2--------------------------------------
+	public static ArrayList<String> f2_read_JSON_objects_from_the_data_base(){
+		
+		
+		for(int i=0 ; i<paths.size();i++) {
+			String emptyString="";
+			try {
+			File scannerFile=new File(paths.get(i));
+				Scanner JSONScanner=new Scanner(scannerFile);
+				while(JSONScanner.hasNext()) {
+					emptyString+=JSONScanner.nextLine();
+					
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			
+			Json_arrayList_from_data_base.add(emptyString);
+		}
+		
+		
+		
+		
+		
+		return Json_arrayList_from_data_base;
+		
+	}
+	
+	
+	//-------------------------------T2_F2--------------------------------
+	
+	public static void t2_f2() {
+		for(int i=0 ; i<Json_arrayList_from_data_base.size();i++) {
+	    	
+		    System.out.println(Json_arrayList_from_data_base.get(i));
+		    	
+		    }
+	}
+	//-------------------------------F3--------------------------------
+	public static Map<String, Map<String, Object>> f3_Convert_the_JSON_Object_to_Map() {
+		
+		
+		Type mytype=new TypeToken<Map<String, Object>>(){}.getType();
+	
+		
+	    for(int i =0 ; i<Json_arrayList_from_data_base.size();i++) {
+	    	
+	    	Map<String,Object> temporary_Map = null;
+	    	temporary_Map= myGson.fromJson(Json_arrayList_from_data_base.get(i),mytype);
+	    	mapOfOurCustomerDetailes.put(String.format("Customer_NO:- %s",i+1),temporary_Map);
+	    
+	    }
+		
+	    return mapOfOurCustomerDetailes;
+	    
+                     
+    
+	}
+	//-----------------------------------------------------------------
+	
+	public static Map<String,Map<String, Object>> f4_get_sorted_Map_by_age_of_our_customers(){
+		
+		
+		//1-extract the age of evey customer
+		//2- sort them 
+		//3- put them in new map
+		//4-convert the map to json 
+		//5- write it to database.
+		
+		f0_get_file_names_of_json_files_from_database();
+		f1_creat_path_for_every_json_file();
+		f2_read_JSON_objects_from_the_data_base();
+		f3_Convert_the_JSON_Object_to_Map();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return mapOfOurCustomerDetailes;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//------------------------------General Write---------------------------------------
+		public static void write() {
+		String mystring="o mechanical energy. Most electric motors operate through the interaction between the motor's magnetic field and electric current in a wire winding to generate force in the form of torque applied on the motor's shaft. An electric generator is mechanically identical to an electric motor, but operates with a reversed flow of power, converting mechanical energy into electrical energy.\r\n"
+				+ "\r\n"
+				+ "Electric motors can be powered by direct current (DC) sources, such as from batteries, or rectifiers, or by alternating current (AC) sourc";
+	
+		
+		try {
+			FileWriter writer=new FileWriter("bahaa.txt");
+			writer.write(mystring);
+			writer.close();
+			System.out.println();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	//-------------------------------General Read-------------------------------------
+	public static String read_from_database() {
+		String retunString="";
+		File myFile=new File(".\\the_database\\adel_ahmed.json");
+		try (Scanner readscanner = new Scanner(myFile)) {
+			while (readscanner.hasNext()) {
+				retunString+=readscanner.nextLine();
+				
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return retunString;
+	}
+	
+	
+	
+	
+	
+	
+	
 }
