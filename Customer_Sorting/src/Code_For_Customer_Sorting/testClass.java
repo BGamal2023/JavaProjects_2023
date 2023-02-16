@@ -12,43 +12,25 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
+import javax.swing.text.html.CSS;
+
 public class testClass {
 
 	public static void main(String[] args) {
-		Map<Integer, String> myMap=new HashMap<>();
-		myMap.put(1,"{plc=electrical , age =20}");
-		myMap.put(2,"Java");
-		myMap.put(3,"C++");
-		myMap.put(4,"HTML");
-		myMap.put(5,"PYTHON");
-		myMap.put(6,"C#");
-		myMap.put(7,"REgex");
-		Iterator<Integer> myIterator=myMap.keySet().iterator();
-		while(myIterator.hasNext()) {
-			System.out.println(myIterator.next());
-		}
 		
 		
-		//-------return values ------------------------
-	Iterator<String> myIterator2	=myMap.values().iterator();
+		Map<Integer, String> map=new HashMap<>();
 		
-		while (myIterator2.hasNext()) {
-			System.out.println(myIterator2.next());
-			
-		}
+		map.put(1, "PLC");
+		map.put(2, "css");
+		map.put(3, "java");
+		map.put(4,"javascript");
 		
-		
-		//--------------return entry--------------
-
-		Set<Entry<Integer, String>> mySet=	myMap.entrySet();
+		map.keySet().forEach(k->System.out.println(k));
 		
 		
-		Iterator<Entry<Integer, String>> myIterator3=mySet.iterator();
 		
-		while(myIterator3.hasNext()) {
-			Entry<Integer, String> entry=myIterator3.next();
-			System.out.println("key is ["+entry.getKey()+"] " +  " value is [" +entry.getValue()+ "]");
-		}
+		
 	}
 
 }
