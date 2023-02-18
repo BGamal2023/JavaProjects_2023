@@ -67,6 +67,7 @@ public class Mainclass {
 	static Map<Integer, Object> temporary_Map = new HashMap<>();
 	static cusomersDataLists thecuCusomersDataLists = new cusomersDataLists();
 	static ArrayList<Map<String, Object>> array_of_every_customer_details=new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_electrical_engineers=new ArrayList<>();
 
 	// ---------------------------main method-------------------------------
 
@@ -76,8 +77,10 @@ public class Mainclass {
 		f1_creat_path_for_every_json_file();
 		f2_read_JSON_objects_from_the_data_base();
 		f3_Convert_the_JSON_Object_to_Map();
-		System.out.println(array_of_every_customer_details.get(0).get("name"));
-	
+		f4_get_diffrent_list_for_each_customre_property(array_of_every_customer_details);
+		for(int i=0 ;i<array_of_electrical_engineers.size();i++) {
+			System.out.println(array_of_electrical_engineers.get(i));
+		}
 //		f3_Convert_the_JSON_Object_to_Map();
 //		System.out.println(thecuCusomersDataLists.customers_ages_List());
 
@@ -190,26 +193,12 @@ public class Mainclass {
 
 	// ----------------------------------------------------------------------
 
-	public static void f4_get_diffrent_list_for_each_customre_property(Map<String, Object> anymap) {
-
-		// 1- put every property in separate list ...
-		// 2- then if i need one job i will get the job and related information
-
-		Set<Entry<String, Object>> entry = anymap.entrySet();
-
-		Iterator<Entry<String, Object>> myIterator = entry.iterator();
-		while (myIterator.hasNext()) {
-			Entry<String, Object> myEntry = myIterator.next();
-
-			if (myEntry.getKey() == "name") {
-				thecuCusomersDataLists.customers_names_List().add(myEntry.getValue().toString());
+	public static void f4_get_diffrent_list_for_each_customre_property(ArrayList<Map<String, Object>> givenMap) {
+			for(int i=0 ; i<givenMap.size();i++) {
+				if(givenMap.get(i).get("job")== "electrical engineer") {
+					array_of_electrical_engineers.add(givenMap.get(i));
+				}
 			}
-			if (myEntry.getKey() == "job") {
-				thecuCusomersDataLists.customers_ages_List().add((Integer) myEntry.getValue());
-			}
-
-		}
-
 	}
 
 	// ------------------------------General
