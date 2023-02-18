@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.lang.annotation.ElementType;
 import java.sql.Struct;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -63,18 +64,22 @@ public class Mainclass {
 	static ArrayList<String> Json_arrayList_from_data_base = new ArrayList<>();
 	static Gson myGson = new Gson();
 	static Map<String, Object> mapOfOurCustomerDetailes = new HashMap<>();
-	static Map<String, Object> temporary_Map = new HashMap<>();
+	static Map<Integer, Object> temporary_Map = new HashMap<>();
 	static cusomersDataLists thecuCusomersDataLists = new cusomersDataLists();
+	static ArrayList<Map<String, Object>> array_of_every_customer_details=new ArrayList<>();
 
 	// ---------------------------main method-------------------------------
 
 	public static void main(String[] args) throws JSONException {
-
+		Map<String, Object> localMap=new HashMap<>();
 		f0_get_file_names_of_json_files_from_database();
 		f1_creat_path_for_every_json_file();
 		f2_read_JSON_objects_from_the_data_base();
 		f3_Convert_the_JSON_Object_to_Map();
-		System.out.println(thecuCusomersDataLists.customers_ages_List());
+		System.out.println(array_of_every_customer_details.get(0).get("name"));
+	
+//		f3_Convert_the_JSON_Object_to_Map();
+//		System.out.println(thecuCusomersDataLists.customers_ages_List());
 
 	}
 
@@ -150,7 +155,7 @@ public class Mainclass {
 	}
 
 	// -------------------------------F3--------------------------------
-	public static Map<String, Object> f3_Convert_the_JSON_Object_to_Map() {
+	public static ArrayList<Map<String, Object>> f3_Convert_the_JSON_Object_to_Map() {
 
 		Type mytype = new TypeToken<Map<String, Object>>() {
 		}.getType();
@@ -159,22 +164,23 @@ public class Mainclass {
 
 			Map<String, Object> temMap = null;
 			temMap = myGson.fromJson(Json_arrayList_from_data_base.get(i), mytype);
-
-			f4_get_diffrent_list_for_each_customre_property(temMap);
+			array_of_every_customer_details.add(temMap);
+		
+//			f4_get_diffrent_list_for_each_customre_property(temMap);
 		}
-
-		return temporary_Map;
+				
+		return array_of_every_customer_details;
 
 	}
 	// -----------------------------------------------------------------
 
 	public static void t3_f3() {
 
-		Set<Entry<String, Object>> entry = temporary_Map.entrySet();
+		Set<Entry<Integer, Object>> entry = temporary_Map.entrySet();
 
-		Iterator<Entry<String, Object>> myIterator = entry.iterator();
+		Iterator<Entry<Integer, Object>> myIterator = entry.iterator();
 		while (myIterator.hasNext()) {
-			Entry<String, Object> myEntry = myIterator.next();
+			Entry<Integer, Object> myEntry = myIterator.next();
 
 			System.out.println("Key = [" + myEntry.getKey() + "]" + "..." + "the Value = [" + myEntry.getValue() + "]");
 
