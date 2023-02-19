@@ -14,6 +14,7 @@ import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -69,6 +70,7 @@ public class Mainclass {
 	static ArrayList<Map<String, Object>> array_of_every_customer_details=new ArrayList<>();
 	static ArrayList<Map<String, Object>> array_of_electrical_engineers=new ArrayList<>();
 	static ArrayList<Object> array_of_Jobs=new ArrayList<>();
+	static Set<Object>job_set=new HashSet<>();
 
 	// ---------------------------main method-------------------------------
 
@@ -78,12 +80,27 @@ public class Mainclass {
 		f1_creat_path_for_every_json_file();
 		f2_read_JSON_objects_from_the_data_base();
 		f3_Convert_the_JSON_Object_to_Map();
+		
 		for(int i =0 ; i<array_of_every_customer_details.size();i++) {
-			array_of_Jobs.add(array_of_every_customer_details.get(i).get("job"));
-				
+			job_set.add(array_of_every_customer_details.get(i).get("job"));	
 		}
 		
-		System.out.println(array_of_Jobs.size());
+		array_of_Jobs.addAll(job_set);
+		
+		for(int i =0 ; i<array_of_every_customer_details.size();i++) {
+			
+		if(	array_of_every_customer_details.get(i).get("job")==array_of_Jobs.get(2)) {
+			System.out.println("i am in if ");
+			array_of_electrical_engineers.add(array_of_every_customer_details.get(i));
+		};	
+	
+		}
+		for(int i =0 ; i<array_of_every_customer_details.size();i++) {
+			System.out.println(array_of_every_customer_details.get(i).get("job"));
+			
+			}
+		
+		
 	}
 
 	// ------------------------------F0--------------------------------
