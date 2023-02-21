@@ -219,6 +219,12 @@ public class Mainclass {
 			}
 	}
 
+	
+	
+	
+	public boolean equal() {
+		 
+	}
 	// ------------------------------General
 	// Write---------------------------------------
 	public static void write() {
