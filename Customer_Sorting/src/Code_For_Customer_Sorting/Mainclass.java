@@ -67,40 +67,57 @@ public class Mainclass {
 	static Map<String, Object> mapOfOurCustomerDetailes = new HashMap<>();
 	static Map<Integer, Object> temporary_Map = new HashMap<>();
 	static cusomersDataLists thecuCusomersDataLists = new cusomersDataLists();
-	static ArrayList<Map<String, Object>> array_of_every_customer_details=new ArrayList<>();
-	static ArrayList<Map<String, Object>> array_of_electrical_engineers=new ArrayList<>();
-	static ArrayList<Object> array_of_Jobs=new ArrayList<>();
-	static Set<Object>job_set=new HashSet<>();
+	static ArrayList<Map<String, Object>> array_of_every_customer_details = new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_electrical_engineers = new ArrayList<>();
+	static ArrayList<Object> array_of_Jobs = new ArrayList<>();
+	static ArrayList<Object> array_of_Jobs1 = new ArrayList<>();
+	static Set<Object> job_set = new HashSet<>();
+	static ArrayList<Map<String, Object>> array_of_doctors_customers = new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_mechanical_engineers_customers = new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_electrical_engineer_customers = new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_civil_engineer_customers = new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_teacher_customers = new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_accountant_customers = new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_programmer_customers = new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_chemical_engineers_customers = new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_mathematician_customers = new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_lawer_customers = new ArrayList<>();
+	static ArrayList<Map<String, Object>> array_of_dentist_customers = new ArrayList<>();
 
 	// ---------------------------main method-------------------------------
 
 	public static void main(String[] args) throws JSONException {
-		Map<String, Object> localMap=new HashMap<>();
+
 		f0_get_file_names_of_json_files_from_database();
 		f1_creat_path_for_every_json_file();
 		f2_read_JSON_objects_from_the_data_base();
 		f3_Convert_the_JSON_Object_to_Map();
-		
-		for(int i =0 ; i<array_of_every_customer_details.size();i++) {
-			job_set.add(array_of_every_customer_details.get(i).get("job"));	
-		}
-		
-		array_of_Jobs.addAll(job_set);
-		
-		for(int i =0 ; i<array_of_every_customer_details.size();i++) {
-			
-		if(	array_of_every_customer_details.get(i).get("job")==array_of_Jobs.get(2)) {
-			System.out.println("i am in if ");
-			array_of_electrical_engineers.add(array_of_every_customer_details.get(i));
-		};	
-	
-		}
-		for(int i =0 ; i<array_of_every_customer_details.size();i++) {
-			System.out.println(array_of_every_customer_details.get(i).get("job"));
-			
-			}
-		
-		
+		f4_get_array_for_jobs_for_our_customers();
+		f5_get_array_for_doctors_customers();
+		f6_get_array_for_mechanical_engineer_customers();
+		f7_get_array_for_electrical_engineer_customers();
+		f8_get_array_for_civil_engineer_customers();
+		f9_get_array_for_teachers_customers();
+		f10_get_array_for_accountants_customers();
+		f11_get_array_for_programmers_customers();
+		f12_get_array_for_chemical_engineer_customers();
+		f13_get_array_for_mathematicians_customers();
+		f14_get_array_for_lawyer_customers();
+		f15_get_array_for_dentist_customers();
+		System.out.println("******************************");
+		System.out.println(array_of_doctors_customers);
+		System.out.println("******************************");
+		System.out.println(array_of_mechanical_engineers_customers);
+		System.out.println("******************************");
+		System.out.println(array_of_electrical_engineer_customers);
+		System.out.println("******************************");
+		System.out.println(array_of_dentist_customers);
+
+		// ================end of main method===============================
+
+		// doctor
+		// lawyer
+		// teacher
 	}
 
 	// ------------------------------F0--------------------------------
@@ -185,14 +202,13 @@ public class Mainclass {
 			Map<String, Object> temMap = null;
 			temMap = myGson.fromJson(Json_arrayList_from_data_base.get(i), mytype);
 			array_of_every_customer_details.add(temMap);
-		
-//			f4_get_diffrent_list_for_each_customre_property(temMap);
+
 		}
-				
+
 		return array_of_every_customer_details;
 
 	}
-	// -----------------------------------------------------------------
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 	public static void t3_f3() {
 
@@ -208,23 +224,168 @@ public class Mainclass {
 
 	}
 
-	// ----------------------------------------------------------------------
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-	public static void f4_get_diffrent_list_for_each_customre_property() {
-			for(int i=0 ; i<array_of_every_customer_details.size();i++) {
-				if(array_of_every_customer_details.get(i).get("job")== "electrical engineer") {
-					System.out.println("i am inside if");
-					array_of_electrical_engineers.add(array_of_every_customer_details.get(i));
-				}
+	public static void f4_get_array_for_jobs_for_our_customers() {
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			job_set.add(array_of_every_customer_details.get(i).get("job"));
+		}
+		array_of_Jobs.addAll(job_set);
+	}
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	public static void f5_get_array_for_doctors_customers() {
+
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			if (array_of_every_customer_details.get(i).get("job").equals(array_of_Jobs.get(0))) {
+
+				array_of_doctors_customers.add(array_of_every_customer_details.get(i));
 			}
+		}
 	}
 
-	
-	
-	
-	public boolean equal() {
-		 
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	public static void f6_get_array_for_mechanical_engineer_customers() {
+
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			if (array_of_every_customer_details.get(i).get("job").equals(array_of_Jobs.get(1))) {
+
+				array_of_mechanical_engineers_customers.add(array_of_every_customer_details.get(i));
+			}
+		}
 	}
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	public static void f7_get_array_for_electrical_engineer_customers() {
+
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			if (array_of_every_customer_details.get(i).get("job").equals(array_of_Jobs.get(2))) {
+
+				array_of_electrical_engineers.add(array_of_every_customer_details.get(i));
+			}
+		}
+	}
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	public static void f8_get_array_for_civil_engineer_customers() {
+
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			if (array_of_every_customer_details.get(i).get("job").equals(array_of_Jobs.get(3))) {
+
+				array_of_civil_engineer_customers.add(array_of_every_customer_details.get(i));
+			}
+		}
+	}
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	public static void f9_get_array_for_teachers_customers() {
+
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			if (array_of_every_customer_details.get(i).get("job").equals(array_of_Jobs.get(4))) {
+
+				array_of_teacher_customers.add(array_of_every_customer_details.get(i));
+			}
+		}
+	}
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	public static void f10_get_array_for_accountants_customers() {
+
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			if (array_of_every_customer_details.get(i).get("job").equals(array_of_Jobs.get(5))) {
+
+				array_of_accountant_customers.add(array_of_every_customer_details.get(i));
+			}
+		}
+	}
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	public static void f11_get_array_for_programmers_customers() {
+
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			if (array_of_every_customer_details.get(i).get("job").equals(array_of_Jobs.get(6))) {
+
+				array_of_programmer_customers.add(array_of_every_customer_details.get(i));
+			}
+		}
+	}
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	public static void f12_get_array_for_chemical_engineer_customers() {
+
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			if (array_of_every_customer_details.get(i).get("job").equals(array_of_Jobs.get(7))) {
+
+				array_of_chemical_engineers_customers.add(array_of_every_customer_details.get(i));
+			}
+		}
+	}
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	public static void f13_get_array_for_mathematicians_customers() {
+
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			if (array_of_every_customer_details.get(i).get("job").equals(array_of_Jobs.get(8))) {
+
+				array_of_mathematician_customers.add(array_of_every_customer_details.get(i));
+			}
+		}
+	}
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	public static void f14_get_array_for_lawyer_customers() {
+
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			if (array_of_every_customer_details.get(i).get("job").equals(array_of_Jobs.get(9))) {
+
+				array_of_lawer_customers.add(array_of_every_customer_details.get(i));
+			}
+		}
+	}
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	public static void f15_get_array_for_dentist_customers() {
+
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+			if (array_of_every_customer_details.get(i).get("job").equals(array_of_Jobs.get(10))) {
+
+				array_of_dentist_customers.add(array_of_every_customer_details.get(i));
+			}
+		}
+	}
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	public static void f6_get_array_for_x0_customers() {
+		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
+
+		}
+	}
+	// XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 	// ------------------------------General
 	// Write---------------------------------------
 	public static void write() {
