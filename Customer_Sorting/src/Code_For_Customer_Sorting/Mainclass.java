@@ -13,6 +13,8 @@ import java.lang.annotation.ElementType;
 import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -104,14 +106,7 @@ public class Mainclass {
 		f13_get_array_for_mathematicians_customers();
 		f14_get_array_for_lawyer_customers();
 		f15_get_array_for_dentist_customers();
-		System.out.println("******************************");
-		System.out.println(array_of_doctors_customers);
-		System.out.println("******************************");
-		System.out.println(array_of_mechanical_engineers_customers);
-		System.out.println("******************************");
-		System.out.println(array_of_electrical_engineer_customers);
-		System.out.println("******************************");
-		System.out.println(array_of_dentist_customers);
+		f17_v1_sorting_our_Doctors_according_to_thier_ages();
 
 		// ================end of main method===============================
 
@@ -207,6 +202,12 @@ public class Mainclass {
 
 		return array_of_every_customer_details;
 
+	}
+	
+	
+	
+	public static void f3_3Sorting_our_customers_according_to_thier_Ages() {
+		
 	}
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -377,8 +378,53 @@ public class Mainclass {
 	}
 
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	public static void f17_v1_sorting_our_Doctors_according_to_thier_ages() {
+		
+		//get list of entryset of the doctors customers
+	List<Entry<String,Object>> list=new ArrayList<>();
+	Map<String, Object> mymap=new HashMap<>();
+		for (int i=0 ;i<array_of_doctors_customers.size();i++) {
+	list.addAll(array_of_accountant_customers.get(i).entrySet())	;
+		}
+		
+		System.out.println("%%%%%%%%%befor sorting%%%%%%");
+		for(var entry:list) {
+			System.out.println(entry.getKey()+"\t" + entry.getValue());
+		}
+		
+		System.out.println("%%%%after sorting%%%%%%%%%%%");
+		
+		Collections.sort(list, new Comparator<Entry<String, Object>>() {
 
+			Entry<String, Object> returnedEntry=null;
+			@Override
+			public int compare(Entry<String, Object> o1, Entry<String, Object> o2) {
+				
+				
+					
+					return o1.getValue().toString().compareTo(o2.getValue().toString());
+				
+				
+			}
+		});
+		
+		
+				for(var entry:list) {
+					System.out.println(entry.getKey()+ "\t" +entry.getValue());
+				}
+		
+	}
 	// %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	public static void f17_v2_sorting_our_Doctors_according_to_thier_ages() {
+		List<Entry<String, Object>> list = null;
+		for (Map<String, Object> map : array_of_doctors_customers) {
+			Set<Entry<String, Object>> set = map.entrySet();
+			list.addAll(set);
+		}
+		
+
+	}
 	public static void f6_get_array_for_x0_customers() {
 		for (int i = 0; i < array_of_every_customer_details.size(); i++) {
 
