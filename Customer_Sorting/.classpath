@@ -6,8 +6,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="E:/Programming/Java/Java draft/External JAR files for eclips/gson-2.6.2.jar"/>
-	<classpathentry kind="lib" path="E:/Programming/Java/Java draft/External JAR files for eclips/java-json.jar"/>
-	<classpathentry kind="lib" path="E:/Programming/Java/Java draft/External JAR files for eclips/json-simple-1.1.1.wso2v1.jar"/>
+	<classpathentry kind="lib" path="E:/Programming/3_Java/Java draft/External JAR files for eclips/gson-2.6.2.jar"/>
+	<classpathentry kind="lib" path="E:/Programming/3_Java/Java draft/External JAR files for eclips/java-json.jar"/>
+	<classpathentry kind="lib" path="E:/Programming/3_Java/Java draft/External JAR files for eclips/json-simple-1.1.1.wso2v1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
